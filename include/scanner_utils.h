@@ -1,6 +1,7 @@
-#include "../include/ScannerCommands.h"
+#pragma once
+#include <Arduino.h>
 
-uint8_t setToCommandMode[] = {
+const uint8_t UART_enterCommandMode[] = {
   0x7E, 0x00,
   0x08,
   0x01,
@@ -9,7 +10,7 @@ uint8_t setToCommandMode[] = {
   0xAB, 0xCD
 };
 
-uint8_t startScanCommand[] = {
+const uint8_t UART_startScanCommand[] = {
   0x7E, 0x00,
   0x08,
   0x01,
@@ -18,7 +19,7 @@ uint8_t startScanCommand[] = {
   0xAB, 0xCD
 };
 
-uint8_t stopScanCommand[] = {
+const uint8_t UART_stopScanCommand[] = {
   0x7E, 0x00,
   0x08,
   0x01,
