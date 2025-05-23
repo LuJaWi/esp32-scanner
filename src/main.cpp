@@ -1,5 +1,5 @@
 #include <HardwareSerial.h>
-#include "../lib/WaveshareScanner/scanner.h"
+#include "../include/header.h"
 
 #define UART_NUM 2
 #define RXD2 16 // TX from Scanner into RX on MCU
@@ -7,7 +7,7 @@
 // Waveshare scanner uses 5v (VCC)
 
 HardwareSerial ScannerSerial(UART_NUM); // UART2
-WaveshareScanner Scanner(ScannerSerial);
+WaveshareScanner Scanner(ScannerSerial); // From Waveshare Scanner Library
 
 void readManualScan(HardwareSerial& scanner){
   String barcode = scanner.readStringUntil('\n');

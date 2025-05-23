@@ -1,3 +1,4 @@
+// Scanner Library
 #pragma once
 
 #include <HardwareSerial.h>
