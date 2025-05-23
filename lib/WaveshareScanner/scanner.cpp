@@ -1,6 +1,6 @@
 #include <HardwareSerial.h>
-#include "../include/scanner.h"
-#include "../include/scanner_utils.h"
+#include "scanner.h"
+#include "scanner_utils.h"
 
 
 
@@ -14,6 +14,7 @@ public:
   void startScan();
   void stopScan();
   String readAsHex();
+  String readBuffer();
 };
 
 // Set the scanner to Command Mode to receive UART commands
@@ -31,6 +32,7 @@ void WaveshareScanner::stopScan() {
   serial.write(UART_stopScanCommand, sizeof(UART_stopScanCommand));
 };
 
+// Read Available data in buffer as hex with 0x?? formatting
 String WaveshareScanner::readAsHex(){
   String hexOut = "";
   String a;
@@ -45,4 +47,13 @@ String WaveshareScanner::readAsHex(){
     Serial.print(" ");
   }
   return hexOut;
+};
+
+// Read the string in the buffer until a new line is reached
+String WaveshareScanner::readBuffer() {
+  String data = serial.readStringUntil('\n');
+  if (data.length()>7){
+    Serial.println(data.substring(7));
+  }
+  return data;
 };
