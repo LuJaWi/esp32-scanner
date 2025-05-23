@@ -10,6 +10,7 @@ public:
   void setToCommandMode();
   void startScan();
   void stopScan();
-  String readAsHex();
-  String readBuffer();  
+  String readAsHexString();
+  String readBuffer();
+
 };

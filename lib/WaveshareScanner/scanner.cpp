@@ -2,20 +2,7 @@
 #include "scanner.h"
 #include "scanner_utils.h"
 
-
-
-class WaveshareScanner {
-public:
-  // Create a class to interface with a Waveshare scanner module via a HardwareSerial connection.
-  WaveshareScanner(HardwareSerial &scannerSerial) : serial(scannerSerial) {
-  };
-  HardwareSerial& serial;
-  void setToCommandMode();
-  void startScan();
-  void stopScan();
-  String readAsHex();
-  String readBuffer();
-};
+WaveshareScanner::WaveshareScanner(HardwareSerial &scannerSerial) : serial(scannerSerial) {};
 
 // Set the scanner to Command Mode to receive UART commands
 void WaveshareScanner::setToCommandMode() {
@@ -25,6 +12,19 @@ void WaveshareScanner::setToCommandMode() {
 // Start scanning
 void WaveshareScanner::startScan() {
   serial.write(UART_startScanCommand, sizeof(UART_startScanCommand));
+  int bufferSize = 7;
+  uint8_t buffer[bufferSize];
+  uint8_t* buffer_p = buffer;
+  serial.readBytes(buffer_p, bufferSize);
+  if (!responseConfirmed(buffer_p, bufferSize)) {
+    Serial.println("Started Scanning");
+  } else {
+    Serial.print("Unexpected response recieved while trying to start scan: ");
+    for (int i = 0 ; i < bufferSize ; i++){
+      Serial.print(buffer_p[i]); Serial.print(" ");
+    };
+    Serial.println();
+  }
 };
 
 // Stop the current scanning step
@@ -33,7 +33,7 @@ void WaveshareScanner::stopScan() {
 };
 
 // Read Available data in buffer as hex with 0x?? formatting
-String WaveshareScanner::readAsHex(){
+String WaveshareScanner::readAsHexString(){
   String hexOut = "";
   String a;
   while (serial.available()) {
@@ -52,8 +52,6 @@ String WaveshareScanner::readAsHex(){
 // Read the string in the buffer until a new line is reached
 String WaveshareScanner::readBuffer() {
   String data = serial.readStringUntil('\n');
-  if (data.length()>7){
-    Serial.println(data.substring(7));
-  }
+  Serial.println(data.substring(7));
   return data;
 };

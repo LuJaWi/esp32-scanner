@@ -1,6 +1,8 @@
 #pragma once
 #include <Arduino.h>
 
+bool responseConfirmed(uint8_t* response, size_t responseSize);
+
 const uint8_t UART_enterCommandMode[] = {
   0x7E, 0x00,
   0x08,
@@ -27,3 +29,6 @@ const uint8_t UART_stopScanCommand[] = {
   0x00,
   0xAB, 0xCD
 };
+
+
+const uint8_t WS_ACK[] = {02, 00, 00, 01, 00, 33, 3};
