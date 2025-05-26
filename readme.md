@@ -1,26 +1,43 @@
 # Overview
-🚧 This project is still in development! Feel free to fork and tweak, but expect bugs and weirdness. 🚧
 
-This project is intended to be an open-source wireless scanner that can easily be controlled via a host computer. The original intended use was for laboratory robotics to help with sample tracking in life sciences laboratories, so many of the models are based around the [SBS](https://www.slas.org/SLAS/assets/File/public/standards/ANSI_SLAS_4-2004_WellPositions.pdf) format, but I've tried to keep the language as general as possible to make the project flexible and transferrable!
+🚧 **This project is still in development!** Feel free to fork and tweak things, but expect bugs and weirdness along the way. 🚧
+
+This is an open-source **wireless barcode scanner** designed to be easily controlled from a host computer. It was originally developed for use in **laboratory robotics** to assist with sample tracking in life sciences labs. As a result, many of the design choices assume compatibility with the [SBS format](https://www.slas.org/SLAS/assets/File/public/standards/ANSI_SLAS_4-2004_WellPositions.pdf), but I've tried to keep the terminology and logic general enough for use in other settings as well.
+
+---
 
 # Hardware
 
-The primary objective with the hardware choices for this project is to prioritize using parts that are widely available and simple to assemble.
-To make the barrier to getting started as low as possible, I've opted to avoid hardware configurations that require addtional soldering wherever possible.
-This does mean that the finished product is not as small as it could possibly be, but it should be much easier to assemble and repair for folks of all skill levels.
-There are a few portions of this project where that may become unavoidable, but I'll do my best to make that as clear as possible whenever I can. 
+The goal of this project is to use **widely available, easy-to-assemble components** to make it accessible for hobbyists and professionals alike.
+
+To lower the barrier to entry, I've avoided hardware that requires soldering wherever possible. While this might result in a slightly bulkier build, it should be easier to assemble and repair.
+
+There may be a few unavoidable exceptions where soldering is required, but I'll do my best to make those cases clear when they come up.
+
+---
 
 ### Microcontroller
-The brains of this project is an [ESP32 Microcontoller](https://www.espressif.com/en/products/socs/esp32). These are super cheap, widely available, and thoroughly documented.
 
-### Scanner
-I've opted to use a [1D/2D Barcode Scanner from Waveshare (14810)](https://www.waveshare.com/barcode-scanner-module.htm) as the scanner.
-I haven't tested other scanners, and there are certain configuration codes within the Arduino code that I assume are unique to the scanner firmware, so I would reccommend sticking with that brand and model of scanner. 
-The 3D models are also assuming a module with the Waveshare dimensions, so other scanners might not fit.
+The brain of the scanner is an [ESP32 microcontroller](https://www.espressif.com/en/products/socs/esp32). It's affordable, well-documented, and widely available.
+
+---
+
+### Barcode Scanner
+
+This project uses the [Waveshare 1D/2D Barcode Scanner (Part #14810)](https://www.waveshare.com/barcode-scanner-module.htm).
+
+> ⚠️ **Note**: I haven’t tested other scanner modules. Some parts of the Arduino code (e.g., configuration barcodes) are likely **specific to this scanner's firmware**. If you're using a different scanner, compatibility may be limited, and the 3D models might not fit.
+
+---
 
 ### Case
-The housing and dock for this project are 3D printed pieces, which you can either print yourself, or order using a [3D printing service](https://duckduckgo.com/?t=h_&q=3d+printing+services&ia=web)
 
+The scanner housing and charging dock are designed to be 3D printed. You can print them yourself or use a [3D printing service](https://duckduckgo.com/?t=h_&q=3d+printing+services&ia=web) if you don’t have access to a printer.
+
+---
 
 # Software
-🚧 Coming soon...
+
+🚧 *Coming soon…*
+
+---
