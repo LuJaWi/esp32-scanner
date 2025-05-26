@@ -8,6 +8,7 @@
 
 HardwareSerial ScannerSerial(UART_NUM); // UART2
 WaveshareScanner Scanner(ScannerSerial); // From Waveshare Scanner Library
+// AccessPoint accessPoint;
 
 void readManualScan(HardwareSerial& scanner){
   String barcode = scanner.readStringUntil('\n');
@@ -23,11 +24,18 @@ void setup() {
   Scanner.setToCommandMode();
   delay(500);
   ScannerSerial.flush();
+  // accessPoint.startServer();
 }
 
 void loop() {
-  Scanner.startScan();
-  Scanner.readAsHexString();
-  Scanner.readBuffer();
-  Serial.print("Last read barcode: "); Serial.println(Scanner.lastBarcode);
+  // accessPoint.receiveCommand();
+  // if (accessPoint.currentCommand == "SCAN") {
+    Scanner.startScan();
+    Scanner.readAsHexString();
+    Scanner.readBuffer();
+    if (Scanner.lastBarcode != ""){
+      Serial.print("Barcode: "); Serial.println(Scanner.lastBarcode);
+    }
+  // }
+  delay(20);
 }

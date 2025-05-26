@@ -17,7 +17,7 @@ void WaveshareScanner::startScan() {
   uint8_t* buffer_p = buffer;
   serial.readBytes(buffer_p, bufferSize);
   if (!responseConfirmed(buffer_p, bufferSize)) {
-    Serial.println("Started Scanning");
+    // Serial.println("Started Scanning");
   } else {
     Serial.print("Unexpected response recieved while trying to start scan: ");
     for (int i = 0 ; i < bufferSize ; i++){
@@ -42,9 +42,9 @@ String WaveshareScanner::readAsHexString(){
     a += String(b);
     a += " ";
     hexOut += a;
-    Serial.print("0x");
-    Serial.print(b, HEX);
-    Serial.print(" ");
+    // Serial.print("0x");
+    // Serial.print(b, HEX);
+    // Serial.print(" ");
   }
   return hexOut;
 };
@@ -53,7 +53,7 @@ String WaveshareScanner::readAsHexString(){
 String WaveshareScanner::readBuffer() {
   String data = serial.readStringUntil('\n');
   // Serial.println(data.substring(7)); // Skip acknowledge response
-  Serial.println(data);
+  // Serial.println(data);
   lastBarcode = data;
   return data;
 };

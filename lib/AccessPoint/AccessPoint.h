@@ -12,9 +12,10 @@ class AccessPoint {
 public:
   void startServer();
   void checkConnection();
-  void receiveCommand(String cmd);
+  void receiveCommand();
   int serverPort = SERVER_PORT;
   WiFiServer server = WiFiServer(serverPort);
   WiFiClient client;
   IPAddress IP;
+  String currentCommand;
 };

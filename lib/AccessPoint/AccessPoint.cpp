@@ -19,38 +19,14 @@ void AccessPoint::checkConnection() {
   }
 };
 
-#include <unordered_map>
-#include <functional>
-
-// Define a type for command handler functions
-using CommandHandler = std::function<void(const String&)>;
-
-// Example command handlers
-void handleStart(const String& cmd) {
-  Serial.println("Handling START command");
-}
-
-void handleStop(const String& cmd) {
-  Serial.println("Handling STOP command");
-}
-
-// Unordered map for command parsing
-std::unordered_map<String, CommandHandler> commandMap = {
-  {"START", handleStart},
-  {"STOP", handleStop}
-};
-
 // Modify receiveCommand to use the map
-void AccessPoint::receiveCommand(String cmd) {
+void AccessPoint::receiveCommand() {
   if (client && client.connected() && client.available()) {
+    String cmd = client.readStringUntil('\n');
     cmd.trim();
-    Serial.print("Command received: ");  Serial.println(cmd);
-
-    auto it = commandMap.find(cmd);
-    if (it != commandMap.end()) {
-      it->second(cmd); // Call the handler
-    } else {
-      Serial.println("Unknown command");
+    if (cmd.length() > 0) {
+      Serial.print("Command received: ");  Serial.println(cmd);
+      currentCommand = cmd;
     }
   }
 }
