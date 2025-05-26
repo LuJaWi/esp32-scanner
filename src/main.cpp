@@ -25,8 +25,9 @@ void setup() {
   ScannerSerial.flush();
 }
 
-void loop() { 
+void loop() {
   Scanner.startScan();
-  Scanner.readAsHex();
-  Scanner.readBuffer();  
+  Scanner.readAsHexString();
+  Scanner.readBuffer();
+  Serial.print("Last read barcode: "); Serial.println(Scanner.lastBarcode);
 }

@@ -52,6 +52,10 @@ String WaveshareScanner::readAsHexString(){
 // Read the string in the buffer until a new line is reached
 String WaveshareScanner::readBuffer() {
   String data = serial.readStringUntil('\n');
-  Serial.println(data.substring(7));
+  // Serial.println(data.substring(7)); // Skip acknowledge response
+  Serial.println(data);
+  lastBarcode = data;
   return data;
 };
+
+

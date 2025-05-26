@@ -12,5 +12,6 @@ public:
   void stopScan();
   String readAsHexString();
   String readBuffer();
+  String lastBarcode; // Previously read barcode
 
 };
