@@ -8,7 +8,7 @@ This is an open-source **wireless barcode scanner** designed to be easily contro
 
 # Hardware
 
-The goal of this project is to use **widely available, easy-to-assemble components** to make it accessible for hobbyists and professionals alike.
+The goal of this project is to use **widely available, easy-to-assemble components**
 
 To lower the barrier to entry, I've avoided hardware that requires soldering wherever possible. While this might result in a slightly bulkier build, it should be easier to assemble and repair.
 
