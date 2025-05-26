@@ -1,5 +1,7 @@
 #pragma once
 
+#include <WiFi.h>
+
 #define SERVER_PORT 9316
 
 // Access Point credentials
